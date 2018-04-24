@@ -1,20 +1,28 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchWeather } from "../actions/index";
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
   constructor(props) {
     super(props);
 
     this.state = { term: "" };
     this.onInputChange = this.onInputChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   onInputChange(e) {
-    console.log(e.target.value);
     this.setState({ term: e.target.value });
   }
 
   onFormSubmit(e) {
     e.preventDefault();
+
+    // go and fetch weather data
+    this.props.fetchWeather(this.state.term);
+    // re-render empty input
+    this.setState({ term: "" });
   }
 
   render() {
@@ -35,3 +43,13 @@ export default class SearchBar extends Component {
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchWeather }, dispatch);
+}
+
+// Why null?
+// mapDispatchToProps is always the 2nd arg in connect()
+// null is passed as placeholder and we don't care about the
+// the state here
+export default connect(null, mapDispatchToProps)(SearchBar);

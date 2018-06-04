@@ -18,7 +18,8 @@ Navigate to `http://localhost:8080/webpack-dev-server/` once npm has successully
 ## Description
 
 This app makes use of the <a href="https://openweathermap.org/api">OpenWeatherMap API to retrieve weather data</a>.
-<a href="http://borisyankov.github.io/react-sparklines/">React Sparklines is used to generate graphs.
+<br>
+<a href="http://borisyankov.github.io/react-sparklines/">React Sparklines</a> is used to generate graphs.
 
 ## Usage
 
